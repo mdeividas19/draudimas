@@ -10,4 +10,9 @@ class Owner extends Model
     use HasFactory;
     protected $fillable = ['name', 'surname', 'phone', 'email', 'address'];
     protected $table = 'owners';
+
+    public function cars()
+    {
+        return $this->hasMany(Car::class);
+    }
 }
