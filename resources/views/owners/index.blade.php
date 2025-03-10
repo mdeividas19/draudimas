@@ -12,6 +12,7 @@
                             <th>Phone</th>
                             <th>Email</th>
                             <th>Address</th>
+                            <th>Cars</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -24,6 +25,11 @@
                             <td>{{$owner->phone}}</td>
                             <td>{{$owner->email}}</td>
                             <td>{{$owner->address}}</td>
+                            <td>
+                                @foreach ($owner->cars as $car)
+                                    {{$car->model}} <br>
+                                @endforeach
+                            </td>
                             <td>
                                 <a href="{{ route('owners.edit', $owner->id) }}" class="btn btn-primary">Edit</a>
                             </td>
