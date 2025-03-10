@@ -9,6 +9,18 @@
 <body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('owners.index') }}">Owners</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('cars.index') }}">Cars</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     @yield('content')
 </div>
 </body>
