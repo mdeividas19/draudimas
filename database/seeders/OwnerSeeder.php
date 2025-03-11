@@ -11,16 +11,15 @@ class OwnerSeeder extends Seeder
 {
     public function run(): void
     {
-        Owner::factory(10)
-            ->has(
-                Car::factory()
-                    ->count(3)
-                    ->state(function (array $attributes, Owner $owner) {
-                        return ['owner_id' => $owner->id];
-                    })
-            )->create();
-     #   Owner::factory(10)->create()->each(function ($owner) {
-      #      Car::factory(3)->create(['owner_id' => $owner->id]);
-      #  });
+        for ($i = 0; $i < 10; $i++) {
+            Owner::factory()
+                ->has(
+                    Car::factory()
+                        ->count(rand(1, 3))
+                        ->state(function (array $attributes, Owner $owner) {
+                            return ['owner_id' => $owner->id];
+                        })
+                )->create();
+        }
     }
 }
