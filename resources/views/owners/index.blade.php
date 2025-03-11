@@ -27,7 +27,7 @@
                             <td>{{$owner->address}}</td>
                             <td>
                                 @foreach ($owner->cars as $car)
-                                    {{$car->model}} <br>
+                                    {{$car->brand}} {{$car->model}} <br>
                                 @endforeach
                             </td>
                             <td>

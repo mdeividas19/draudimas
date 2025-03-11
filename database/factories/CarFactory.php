@@ -17,10 +17,11 @@ class CarFactory extends Factory
      */
     public function definition(): array
     {
+        $this->faker->addProvider(new \Faker\Provider\Fakecar($this->faker));
         return [
             'reg_number' => $this->faker->regexify('[A-Z][A-Z][A-Z]-\d\d\d'),
-            'brand' => $this->faker->randomElement(['Toyota', 'Honda', 'Ford', 'BMW', 'Audi']),
-            'model' => $this->faker->word(),
+            'brand' => $this->faker->vehicleBrand(),
+            'model' => $this->faker->vehicleModel(),
         ];
     }
 }
