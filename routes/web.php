@@ -10,3 +10,7 @@ Route::get('/', function () {
 
 Route::resource('owners', OwnerController::class);
 Route::resource('cars', CarController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
