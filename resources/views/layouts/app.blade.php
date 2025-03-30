@@ -52,5 +52,8 @@
     </nav>
     @yield('content')
 </div>
+<div>
+    Phone: [phone]
+</div>
 </body>
 </html>
