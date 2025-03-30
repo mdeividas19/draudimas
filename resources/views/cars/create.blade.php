@@ -6,19 +6,19 @@
                 <form method="post" action="{{ route("cars.store") }}">
                     @csrf
                     <div class="mb-3">
-                        <label class="form-label">Brand:</label>
+                        <label class="form-label">{{ __('Brand') }}:</label>
                         <input type="text" class="form-control" name="brand">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Model:</label>
+                        <label class="form-label">{{ __('Model') }}:</label>
                         <input type="text" class="form-control" name="model">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Registration Number:</label>
+                        <label class="form-label">{{ __('Registration Number') }}:</label>
                         <input type="text" class="form-control" name="reg_number">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Owner ID:</label>
+                        <label class="form-label">{{ __('Owner ID') }}:</label>
                         <select class="form-control" name="owner_id">
                             <option value="">-</option>
                             @foreach($owners as $owner)
@@ -26,7 +26,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-success">Add</button>
+                    <button type="submit" class="btn btn-success">{{ __('Add') }}</button>
                 </form>
             </div>
         </div>

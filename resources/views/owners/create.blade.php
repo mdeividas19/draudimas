@@ -6,26 +6,26 @@
                 <form method="post" action="{{ route("owners.store") }}">
                     @csrf
                     <div class="mb-3">
-                        <label class="form-label">Name:</label>
+                        <label class="form-label">{{ __('Name') }}:</label>
                         <input type="text" class="form-control" name="name">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Surname:</label>
+                        <label class="form-label">{{ __('Surname') }}:</label>
                         <input type="text" class="form-control" name="surname">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Phone:</label>
+                        <label class="form-label">{{ __('Phone') }}:</label>
                         <input type="text" class="form-control" name="phone">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Email:</label>
+                        <label class="form-label">{{ __('Email') }}:</label>
                         <input type="email" class="form-control" name="email">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Address:</label>
+                        <label class="form-label">{{ __('Address') }}:</label>
                         <input type="text" class="form-control" name="address">
                     </div>
-                    <button type="submit" class="btn btn-success">Add</button>
+                    <button type="submit" class="btn btn-success">{{ __('Add') }}</button>
                 </form>
             </div>
         </div>

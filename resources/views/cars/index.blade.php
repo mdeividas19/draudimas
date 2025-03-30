@@ -3,14 +3,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 mt-3">
-                <a href="{{ route("cars.create") }}" class="btn btn-success">Add new car</a>
+                <a href="{{ route("cars.create") }}" class="btn btn-success">{{ __('Add new car') }}</a>
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>Brand</th>
-                        <th>Model</th>
-                        <th>Registration Number</th>
-                        <th>Owner</th>
+                        <th>{{ __('Brand') }}</th>
+                        <th>{{ __('Model') }}</th>
+                        <th>{{ __('Registration Number') }}</th>
+                        <th>{{ __('Owner') }}</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -25,17 +25,17 @@
                                 @if ($car->owner!=null)
                                     {{ $car->owner->name }} {{ $car->owner->surname }}
                                 @else
-                                    undefined
+                                    {{ __('undefined') }}
                                     @endif
                             </td>
                             <td>
-                                <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-primary">Edit</a>
+                                <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-primary">{{ __('Edit') }}</a>
                             </td>
                             <td>
                                 <form action="{{ route('cars.destroy', $car->id) }}" method="post">
                                     @csrf
                                     @method("DELETE")
-                                    <button href="" class="btn btn-danger">Delete</button>
+                                    <button href="" class="btn btn-danger">{{ __('Delete') }}</button>
                                 </form>
                             </td>
                         </tr>

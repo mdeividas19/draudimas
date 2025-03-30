@@ -3,16 +3,16 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 mt-3">
-                <a href="{{ route("owners.create") }}" class="btn btn-success">Add new car owner</a>
+                <a href="{{ route("owners.create") }}" class="btn btn-success">{{ __('Add new car owner') }}</a>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Surname</th>
-                            <th>Phone</th>
-                            <th>Email</th>
-                            <th>Address</th>
-                            <th>Cars</th>
+                            <th>{{ __('Name') }}</th>
+                            <th>{{ __('Surname') }}</th>
+                            <th>{{ __('Phone') }}</th>
+                            <th>{{ __('Email') }}</th>
+                            <th>{{ __('Address') }}</th>
+                            <th>{{ __('Cars') }}</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -31,13 +31,13 @@
                                 @endforeach
                             </td>
                             <td>
-                                <a href="{{ route('owners.edit', $owner->id) }}" class="btn btn-primary">Edit</a>
+                                <a href="{{ route('owners.edit', $owner->id) }}" class="btn btn-primary">{{ __('Edit') }}</a>
                             </td>
                             <td>
                                 <form action="{{ route('owners.destroy', $owner->id) }}" method="post">
                                     @csrf
                                     @method("DELETE")
-                                    <button href="" class="btn btn-danger">Delete</button>
+                                    <button href="" class="btn btn-danger">{{ __('Delete') }}</button>
                                 </form>
                             </td>
                         </tr>
