@@ -28,7 +28,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">{{ __('Owner ID') }}:</label>
-                        <select class="form-control" name="owner_id">
+                        <select class="form-control @error('owner_id') is-invalid @enderror" name="owner_id">
                             <option value="">-</option>
                             @foreach($owners as $owner)
                                 <option value="{{ $owner->id }}">{{ $owner->name }} {{ $owner->surname }}</option>
