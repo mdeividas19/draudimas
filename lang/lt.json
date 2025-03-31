@@ -32,5 +32,14 @@
     "Send Password Reset Link": "Atsiųsk Slaptažodžio Atstatymo Nuorodą",
     "Reset Password": "Atstatyti Slaptažodį",
     "Confirm Password": "Patvirtinti Slaptažodį",
-    "Change Language": "Pakeisti Kalbą"
+    "Change Language": "Pakeisti Kalbą",
+    "Field registration number is required, should be unique and in correct format (e.g. ABC-123)": "Registracijos numerio laukelis yra privalomas, turi būti unikalus ir teisingo formato (pvz. ABC-123)",
+    "Field brand is required, min:2, max:20": "Markės laukelis yra privalomas ir turi būti nuo 2-20 simbolių ilgio",
+    "Field model is required, min:2, max:30": "Modelio laukelis yra privalomas ir turi būti nuo 2-30 simbolių ilgio",
+    "You have to select car owner": "Jūs privalote pasirinkti mašinos savininką",
+    "Field name is required, min:2, max:20": "Vardo laukelis yra privalomas ir turi būti nuo 2-20 simbolių ilgio",
+    "Field surname is required, min:2, max:20": "Pavardės laukelis yra privalomas ir turi būti nuo 2-20 simbolių ilgio",
+    "Field phone is required and should be in correct format": "Telefono numeris yra privalomas ir turi būti teisingo formato",
+    "Field email is required and should be in correct format": "El. pašto adresas yra privalomas ir turi būti teisingo formato",
+    "Field address is required, min:2, max:50": "Adreso laukelis yra privalomas ir turi būti nuo 2-50 simbolių ilgio"
 }
