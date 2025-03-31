@@ -3,19 +3,28 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 mt-3">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach($errors->all() as $error)
+                            <div>
+                                {{ $error }}
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
                 <form method="post" action="{{ route("cars.store") }}">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">{{ __('Brand') }}:</label>
-                        <input type="text" class="form-control" name="brand">
+                        <input type="text" class="form-control @error('brand') is-invalid @enderror" name="brand" value="{{ old('brand') }}">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">{{ __('Model') }}:</label>
-                        <input type="text" class="form-control" name="model">
+                        <input type="text" class="form-control @error('model') is-invalid @enderror" name="model" value="{{ old('model') }}">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">{{ __('Registration Number') }}:</label>
-                        <input type="text" class="form-control" name="reg_number">
+                        <input type="text" class="form-control @error('reg_number') is-invalid @enderror" name="reg_number" value="{{ old('reg_number') }}">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">{{ __('Owner ID') }}:</label>
