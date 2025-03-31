@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CarRequest;
 use App\Models\Car;
 use App\Models\Owner;
 use Illuminate\Http\Request;
@@ -29,8 +30,9 @@ class CarController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CarRequest $request)
     {
+        $request->validate();
         $car = new Car();
         $car->reg_number=$request->reg_number;
         $car->brand=$request->brand;
@@ -60,8 +62,9 @@ class CarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Car $car)
+    public function update(CarRequest $request, Car $car)
     {
+        $request->validate();
         $car->reg_number=$request->reg_number;
         $car->brand=$request->brand;
         $car->model=$request->model;
