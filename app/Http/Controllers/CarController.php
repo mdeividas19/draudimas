@@ -32,7 +32,6 @@ class CarController extends Controller
      */
     public function store(CarRequest $request)
     {
-        $request->validate();
         $car = new Car();
         $car->reg_number=$request->reg_number;
         $car->brand=$request->brand;
@@ -64,7 +63,6 @@ class CarController extends Controller
      */
     public function update(CarRequest $request, Car $car)
     {
-        $request->validate();
         $car->reg_number=$request->reg_number;
         $car->brand=$request->brand;
         $car->model=$request->model;

@@ -21,7 +21,6 @@ class OwnerController extends Controller
 
     public function store(OwnerRequest $request)
     {
-        $request->validate();
         $owner = new Owner();
         $owner->name = $request->name;
         $owner->surname = $request->surname;
@@ -39,7 +38,6 @@ class OwnerController extends Controller
 
     public function update(OwnerRequest $request, Owner $owner)
     {
-        $request->validate();
         $owner->name = $request->name;
         $owner->surname = $request->surname;
         $owner->phone = $request->phone;
