@@ -25,6 +25,7 @@ class CarRequest extends FormRequest
             'reg_number'=>'required|unique:cars,reg_number|regex:/^[A-Z]{3}-\d{3}$/',
             'brand'=>'required|min:2|max:20|string',
             'model'=>'required|min:2|max:30|string',
+            'owner_id'=>'required',
         ];
     }
 
@@ -34,6 +35,7 @@ class CarRequest extends FormRequest
             'reg_number'=> __('Field registration number is required, should be unique and in correct format (e.g. ABC-123)'),
             'brand'=> __('Field brand is required, min:2, max:20'),
             'model'=> __('Field model is required, min:2, max:30'),
+            'owner_id'=> __('You have to select car owner'),
         ];
     }
 }
