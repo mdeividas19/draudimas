@@ -12,7 +12,19 @@
                         @endforeach
                     </div>
                 @endif
-                <form method="post" action="{{ route("cars.update", $car) }}">
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    @foreach ($car->photos as $photo)
+                        <div style="position: relative;">
+                            <img src="{{ asset('storage/' . $photo->photo_path) }}" width="150">
+                            <form action="{{ route('car-photos.destroy', $photo) }}" method="POST" style="position: absolute; top: 0; right: 0;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" style="background: red; color: white; border: none;">X</button>
+                            </form>
+                        </div>
+                    @endforeach
+                </div>
+                <form method="post" action="{{ route("cars.update", $car) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="mb-3">
@@ -35,6 +47,10 @@
                                 <option value="{{ $owner->id }}" {{ ($car->owner_id==$owner->id)?'selected':'' }} >{{ $owner->name }} {{ $owner->surname }}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">{{__('Add New Photos')}}:</label>
+                        <input type="file" class="form-control" name="photos[]" multiple accept="'image/*">
                     </div>
                     <button type="submit" class="btn btn-success">{{ __('Update') }}</button>
                 </form>

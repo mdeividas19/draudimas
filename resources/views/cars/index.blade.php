@@ -11,6 +11,7 @@
                         <th>{{ __('Model') }}</th>
                         <th>{{ __('Registration Number') }}</th>
                         <th>{{ __('Owner') }}</th>
+                        <th>{{ __('Photos') }}</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -27,6 +28,15 @@
                                 @else
                                     {{ __('undefined') }}
                                     @endif
+                            </td>
+                            <td>
+                                @if ($car->photos && count($car->photos) > 0)
+                                    @foreach ($car->photos as $photo)
+                                        <img src="{{ asset('storage/' . $photo->photo_path) }}" width="100">
+                                    @endforeach
+                                @else
+                                    n/a
+                                @endif
                             </td>
                             <td>
                                 <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-primary">{{ __('Edit') }}</a>
