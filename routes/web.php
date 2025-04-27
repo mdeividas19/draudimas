@@ -30,3 +30,4 @@ Route::get('change-language/{lang}', function ($lang)
     }
     return redirect()->back();
 })->name('change.language');
+Route::delete('/car-photos/{photo}', [CarController::class, 'deletePhoto'])->name('car-photos.destroy');
