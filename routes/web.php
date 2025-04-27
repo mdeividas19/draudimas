@@ -12,10 +12,8 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::resource('owners', OwnerController::class)->only(['index']);
-Route::resource('owners', OwnerController::class)->except(['index'])->middleware([VerifyAuth::class, IsAdmin::class]);
-Route::resource('cars', CarController::class)->only(['index'])->middleware(VerifyAuth::class);
-Route::resource('cars', CarController::class)->except(['index'])->middleware([VerifyAuth::class, IsAdmin::class]);
+Route::resource('owners', OwnerController::class)->middleware(VerifyAuth::class);
+Route::resource('cars', CarController::class)->middleware(VerifyAuth::class);
 
 Auth::routes();
 
