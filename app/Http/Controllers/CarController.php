@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CarRequest;
 use App\Models\Car;
+use App\Models\CarPhoto;
 use App\Models\Owner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CarController extends Controller
 {
@@ -63,6 +65,14 @@ class CarController extends Controller
      */
     public function update(CarRequest $request, Car $car)
     {
+        if ($request->hasFile('photos'))
+        {
+            foreach ($request->file('photos') as $photo)
+            {
+                $path = $photo->store('car_photos', 'public');
+                CarPhoto::create(['car_id'=>$car->id, 'photo_path'=>$path]);
+            }
+        }
         $car->reg_number=$request->reg_number;
         $car->brand=$request->brand;
         $car->model=$request->model;
@@ -78,5 +88,12 @@ class CarController extends Controller
     public function destroy(Car $car)
     {
         //
+    }
+
+    public function deletePhoto(CarPhoto $photo)
+    {
+        Storage::disk('public')->delete($photo->photo_path);
+        $photo->delete();
+        return redirect()->back();
     }
 }
