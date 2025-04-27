@@ -22,10 +22,11 @@ class CarRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'reg_number'=>'required|unique:cars,reg_number|regex:/^[A-Z]{3}-\d{3}$/',
+            'reg_number'=>'required|regex:/^[A-Z]{3}-\d{3}$/|unique:cars,reg_number,'.$this->car['id'],
             'brand'=>'required|min:2|max:20|string',
             'model'=>'required|min:2|max:30|string',
             'owner_id'=>'required',
+            'photos.*'=>'image',
         ];
     }
 
@@ -36,6 +37,7 @@ class CarRequest extends FormRequest
             'brand'=> __('Field brand is required, min:2, max:20'),
             'model'=> __('Field model is required, min:2, max:30'),
             'owner_id'=> __('You have to select car owner'),
+            'photos.*'=> __('You can only add images'),
         ];
     }
 }
