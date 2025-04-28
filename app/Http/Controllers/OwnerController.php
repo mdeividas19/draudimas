@@ -27,6 +27,7 @@ class OwnerController extends Controller
         $owner->phone = $request->phone;
         $owner->email = $request->email;
         $owner->address = $request->address;
+        $owner->user_id = $request->user()->id;
         $owner->save();
         return redirect()->route('owners.index');
     }
