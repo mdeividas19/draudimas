@@ -18,37 +18,41 @@
                     </thead>
                     <tbody>
                     @foreach($cars as $car)
-                        <tr>
-                            <td>{{$car->brand}}</td>
-                            <td>{{$car->model}}</td>
-                            <td>{{$car->reg_number}}</td>
-                            <td>
-                                @if ($car->owner!=null)
-                                    {{ $car->owner->name }} {{ $car->owner->surname }}
-                                @else
-                                    {{ __('undefined') }}
+                        @can('viewCar', $car)
+                            <tr>
+                                <td>{{$car->brand}}</td>
+                                <td>{{$car->model}}</td>
+                                <td>{{$car->reg_number}}</td>
+                                <td>
+                                    @if ($car->owner!=null)
+                                        {{ $car->owner->name }} {{ $car->owner->surname }}
+                                    @else
+                                        {{ __('undefined') }}
+                                        @endif
+                                </td>
+                                <td>
+                                    @if ($car->photos && count($car->photos) > 0)
+                                        @foreach ($car->photos as $photo)
+                                            <img src="{{ asset('storage/' . $photo->photo_path) }}" width="100">
+                                        @endforeach
+                                    @else
+                                        n/a
                                     @endif
-                            </td>
-                            <td>
-                                @if ($car->photos && count($car->photos) > 0)
-                                    @foreach ($car->photos as $photo)
-                                        <img src="{{ asset('storage/' . $photo->photo_path) }}" width="100">
-                                    @endforeach
-                                @else
-                                    n/a
-                                @endif
-                            </td>
-                            <td>
-                                <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-primary">{{ __('Edit') }}</a>
-                            </td>
-                            <td>
-                                <form action="{{ route('cars.destroy', $car->id) }}" method="post">
-                                    @csrf
-                                    @method("DELETE")
-                                    <button href="" class="btn btn-danger">{{ __('Delete') }}</button>
-                                </form>
-                            </td>
-                        </tr>
+                                </td>
+                                @can('modifyCar', $car)
+                                    <td>
+                                        <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-primary">{{ __('Edit') }}</a>
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('cars.destroy', $car->id) }}" method="post">
+                                            @csrf
+                                            @method("DELETE")
+                                            <button href="" class="btn btn-danger">{{ __('Delete') }}</button>
+                                        </form>
+                                    </td>
+                                @endcan
+                            </tr>
+                        @endcan
                     @endforeach
                     </tbody>
                 </table>

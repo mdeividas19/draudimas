@@ -19,28 +19,32 @@
                     </thead>
                     <tbody>
                     @foreach($owners as $owner)
-                        <tr>
-                            <td>{{$owner->name}}</td>
-                            <td>{{$owner->surname}}</td>
-                            <td>{{$owner->phone}}</td>
-                            <td>{{$owner->email}}</td>
-                            <td>{{$owner->address}}</td>
-                            <td>
-                                @foreach ($owner->cars as $car)
-                                    {{$car->brand}} {{$car->model}} <br>
-                                @endforeach
-                            </td>
-                            <td>
-                                <a href="{{ route('owners.edit', $owner->id) }}" class="btn btn-primary">{{ __('Edit') }}</a>
-                            </td>
-                            <td>
-                                <form action="{{ route('owners.destroy', $owner->id) }}" method="post">
-                                    @csrf
-                                    @method("DELETE")
-                                    <button href="" class="btn btn-danger">{{ __('Delete') }}</button>
-                                </form>
-                            </td>
-                        </tr>
+                        @can('viewOwner', $owner)
+                            <tr>
+                                <td>{{$owner->name}}</td>
+                                <td>{{$owner->surname}}</td>
+                                <td>{{$owner->phone}}</td>
+                                <td>{{$owner->email}}</td>
+                                <td>{{$owner->address}}</td>
+                                <td>
+                                    @foreach ($owner->cars as $car)
+                                        {{$car->brand}} {{$car->model}} <br>
+                                    @endforeach
+                                </td>
+                                @can('modifyOwner', $owner)
+                                    <td>
+                                        <a href="{{ route('owners.edit', $owner->id) }}" class="btn btn-primary">{{ __('Edit') }}</a>
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('owners.destroy', $owner->id) }}" method="post">
+                                            @csrf
+                                            @method("DELETE")
+                                            <button href="" class="btn btn-danger">{{ __('Delete') }}</button>
+                                        </form>
+                                    </td>
+                                @endcan
+                            </tr>
+                        @endcan
                     @endforeach
                     </tbody>
                 </table>
