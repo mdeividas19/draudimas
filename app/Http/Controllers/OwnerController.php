@@ -32,13 +32,19 @@ class OwnerController extends Controller
         return redirect()->route('owners.index');
     }
 
-    public function edit(Owner $owner)
+    public function edit(Owner $owner, Request $request)
     {
+        if (!$request->user()->can('modifyOwner', $owner)) {
+            return redirect()->route('owners.index');
+        }
         return view('owners.edit', ['owner' => $owner]);
     }
 
     public function update(OwnerRequest $request, Owner $owner)
     {
+        if (!$request->user()->can('modifyOwner', $owner)) {
+            return redirect()->route('owners.index');
+        }
         $owner->name = $request->name;
         $owner->surname = $request->surname;
         $owner->phone = $request->phone;
@@ -48,8 +54,11 @@ class OwnerController extends Controller
         return redirect()->route('owners.index');
     }
 
-    public function destroy(Owner $owner)
+    public function destroy(Owner $owner, Request $request)
     {
+        if (!$request->user()->can('modifyOwner', $owner)) {
+            return redirect()->route('owners.index');
+        }
         $owner->delete();
         return redirect()->route('owners.index');
     }

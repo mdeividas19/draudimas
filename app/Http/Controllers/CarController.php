@@ -54,8 +54,11 @@ class CarController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Car $car)
+    public function edit(Car $car, Request $request)
     {
+        if (!$request->user()->can('modifyCar', $car)) {
+            return redirect()->route('cars.index');
+        }
         $owners = Owner::all();
         return view('cars.edit', compact('car', 'owners'));
     }
@@ -65,6 +68,9 @@ class CarController extends Controller
      */
     public function update(CarRequest $request, Car $car)
     {
+        if (!$request->user()->can('modifyCar', $car)) {
+            return redirect()->route('cars.index');
+        }
         if ($request->hasFile('photos'))
         {
             foreach ($request->file('photos') as $photo)
@@ -85,9 +91,13 @@ class CarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Car $car)
+    public function destroy(Car $car, Request $request)
     {
-        //
+        if (!$request->user()->can('modifyCar', $car)) {
+            return redirect()->route('cars.index');
+        }
+        $car->delete();
+        return redirect()->route('cars.index');
     }
 
     public function deletePhoto(CarPhoto $photo)
